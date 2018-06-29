@@ -1,4 +1,5 @@
 # encoding: UTF-8
+$:.unshift File.expand_path('..', __FILE__)
 require 'ghee/version'
 require 'ghee/connection'
 require 'ghee/errors'

@@ -1,3 +1,4 @@
+require "pp"
 class Ghee
 
   # ResourceProxy lets us create a virtual
@@ -31,7 +32,7 @@ class Ghee
   # path_prefix - String
   #
   def initialize(connection, path_prefix, params = {}, &block)
-    if !params.is_a?Hash
+    if !params.is_a? Hash
       @id = params
       params = {} 
     end
@@ -66,7 +67,7 @@ class Ghee
   #
   def subject
     @subject ||= connection.get(path_prefix) do |req| 
-      req.params.merge!params 
+      req.params.merge! params 
       req.headers["Accept"] = accept_type if self.respond_to? :accept_type
       @block.call(req)if @block
     end.body
